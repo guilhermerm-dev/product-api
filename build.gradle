@@ -1,0 +1,39 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.3'
+	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('testcontainersVersion', "1.17.3")
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.3'
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.7.3'
+	implementation 'javax.validation:validation-api:2.0.1.Final'
+	implementation 'io.springfox:springfox-swagger-ui:2.0.2'
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+	implementation 'org.postgresql:postgresql:42.5.0'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.3'
+	testImplementation 'org.testcontainers:postgresql:1.17.3'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}"
+	}
+}
+
+tasks.named('test') {
+
+}
