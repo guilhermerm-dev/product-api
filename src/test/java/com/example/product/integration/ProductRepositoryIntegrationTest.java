@@ -18,13 +18,13 @@ public class ProductRepositoryIntegrationTest extends RepositoryIntegrationTestC
     @Test
     @Transactional
     public void test() {
-        insertUsers();
+        insertProducts();
         List<ProductModel> products = productRepository.findAll();
         Assert.assertEquals(products.size(), 4);
     }
 
 
-    private void insertUsers() {
+    private void insertProducts() {
         productRepository.save(new ProductModel("SAMPLE_PRODUCT1", "1", "CATEGORY1"));
         productRepository.save(new ProductModel("SAMPLE_PRODUCT2", "2", "CATEGORY2"));
         productRepository.save(new ProductModel("SAMPLE_PRODUCT3", "3", "CATEGORY3"));
